@@ -9,15 +9,14 @@ var SelectionSort = /** @class */ (function () {
     }
     Object.defineProperty(SelectionSort.prototype, "sortArray", {
         get: function () {
-            var arrayOfItems = this.arrayOfNumbers;
-            for (var i = 0; i < arrayOfItems.length; i++) {
-                var temporaryMinValue = 0;
-                for (var j = i + 1; j < arrayOfItems.length; j++) {
-                    if (arrayOfItems[temporaryMinValue] > arrayOfItems[j]) {
+            for (var i = 0; i < this.arrayOfNumbers.length; i++) {
+                var temporaryMinValue = i;
+                for (var j = i + 1; j < this.arrayOfNumbers.length; j++) {
+                    if (this.arrayOfNumbers[j] < this.arrayOfNumbers[temporaryMinValue]) {
                         temporaryMinValue = j;
                     }
-                    if (j === arrayOfItems.length - 1) {
-                        (0, sortSwap_1.swapIndexes)(arrayOfItems, temporaryMinValue, i);
+                    if (j === this.arrayOfNumbers.length - 1) {
+                        (0, sortSwap_1.swapIndexes)(this.arrayOfNumbers, temporaryMinValue, i);
                     }
                 }
             }

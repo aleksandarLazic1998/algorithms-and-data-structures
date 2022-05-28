@@ -6,17 +6,15 @@ export class SelectionSort {
 	}
 
 	get sortArray() {
-		const arrayOfItems = this.arrayOfNumbers;
-
-		for (let i = 0; i < arrayOfItems.length; i++) {
-			let temporaryMinValue = 0;
-			for (let j = i + 1; j < arrayOfItems.length; j++) {
-				if (arrayOfItems[temporaryMinValue] > arrayOfItems[j]) {
+		for (let i = 0; i < this.arrayOfNumbers.length; i++) {
+			let temporaryMinValue = i;
+			for (let j = i + 1; j < this.arrayOfNumbers.length; j++) {
+				if (this.arrayOfNumbers[j] < this.arrayOfNumbers[temporaryMinValue]) {
 					temporaryMinValue = j;
 				}
 
-				if (j === arrayOfItems.length - 1) {
-					swapIndexes(arrayOfItems, temporaryMinValue, i);
+				if (j === this.arrayOfNumbers.length - 1) {
+					swapIndexes(this.arrayOfNumbers, temporaryMinValue, i);
 				}
 			}
 		}
