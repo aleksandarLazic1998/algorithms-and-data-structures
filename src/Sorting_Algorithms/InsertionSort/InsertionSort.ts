@@ -5,11 +5,6 @@ export class InsertionSort {
 
 	get sort() {
 		for (let i = 1; i < this.array.length; i++) {
-<<<<<<< HEAD
-			let firstUnsortedValue = this.array[i];
-			let indexOfHole = i;
-
-=======
 			// Set the value of first unsorted item in array
 			let firstUnsortedValue = this.array[i];
 			// Set the index of value to be swapped
@@ -17,16 +12,10 @@ export class InsertionSort {
 
 			// If index of hole bigger then 0 and,
 			// value of item before first item of unsorted array is bigger than value of first unsorted item in array
->>>>>>> master
 			while (
 				indexOfHole > 0 &&
 				this.array[indexOfHole - 1] > firstUnsortedValue
 			) {
-<<<<<<< HEAD
-				this.array[indexOfHole] = this.array[indexOfHole - 1];
-				indexOfHole = indexOfHole - 1;
-			}
-=======
 				// Set value of item to be swapped with item of index -1
 				this.array[indexOfHole] = this.array[indexOfHole - 1];
 				// Set the index of item to be index - 1
@@ -34,7 +23,6 @@ export class InsertionSort {
 			}
 
 			// Set the value of i to be next unsorted value
->>>>>>> master
 			this.array[indexOfHole] = firstUnsortedValue;
 		}
 
