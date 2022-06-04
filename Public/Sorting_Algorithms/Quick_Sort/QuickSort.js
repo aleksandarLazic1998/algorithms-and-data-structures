@@ -16,4 +16,17 @@ var pivotPointHelper = function (props) {
     swap(array, startIndex, indexOfPivot);
     return indexOfPivot;
 };
-console.log(pivotPointHelper({ array: [4, 8, 2, 1, 5, 7, 6, 3] }));
+var quickSort = function (props) {
+    var array = props.array, _a = props.startIndex, left = _a === void 0 ? 0 : _a, _b = props.endIndex, right = _b === void 0 ? array.length : _b;
+    if (left < right) {
+        var indexOfPivotPoint = pivotPointHelper({
+            array: array,
+            startIndex: left,
+            endIndex: right,
+        });
+        quickSort({ array: array, startIndex: indexOfPivotPoint + 1, endIndex: right });
+        quickSort({ array: array, startIndex: left, endIndex: indexOfPivotPoint - 1 });
+    }
+    return array;
+};
+console.log(quickSort({ array: [4, 8, 2, 1, 5, 7, 6, 3] }));
