@@ -28,6 +28,26 @@ var SignlyLinkedList = /** @class */ (function () {
         this.length++;
         return this;
     };
+    SignlyLinkedList.prototype.pop = function () {
+        var listHasNoLength = this.length === 0;
+        if (listHasNoLength)
+            return undefined;
+        var currentLastItem = this.head;
+        var currentSecondLastItem = currentLastItem;
+        while (currentLastItem && currentLastItem.next) {
+            currentSecondLastItem = currentLastItem;
+            currentLastItem = currentLastItem.next;
+        }
+        this.tail = currentSecondLastItem;
+        if (this.tail)
+            this.tail.next = null;
+        this.length -= 1;
+        if (listHasNoLength) {
+            this.head = null;
+            this.tail = null;
+        }
+        return currentLastItem;
+    };
     return SignlyLinkedList;
 }());
 var list = new SignlyLinkedList();
@@ -35,3 +55,5 @@ list.push(1);
 list.push(2);
 list.push(3);
 list.push(4);
+list.pop();
+console.log(list);

@@ -1,11 +1,11 @@
 interface INode {
 	value: unknown;
-	next: unknown | null;
+	next: any;
 }
 
 class ListNode {
-	// this.next can be of any primary or object type so it is decided in this special case to be unknown
-	public next: unknown | null;
+	// this.next can be of any primary or object type so it is decided in this special case to be any
+	public next: any;
 	constructor(public value: unknown) {
 		this.value = value;
 		this.next = null;
@@ -37,6 +37,29 @@ class SignlyLinkedList {
 		this.length++;
 		return this;
 	}
+
+	pop() {
+		const listHasNoLength = this.length === 0;
+		if (listHasNoLength) return undefined;
+
+		let currentLastItem = this.head;
+		let currentSecondLastItem = currentLastItem;
+
+		while (currentLastItem && currentLastItem.next) {
+			currentSecondLastItem = currentLastItem;
+			currentLastItem = currentLastItem.next;
+		}
+
+		this.tail = currentSecondLastItem;
+		if (this.tail) this.tail.next = null;
+		this.length -= 1;
+		if (listHasNoLength) {
+			this.head = null;
+			this.tail = null;
+		}
+
+		return currentLastItem;
+	}
 }
 
 const list = new SignlyLinkedList();
@@ -44,3 +67,5 @@ list.push(1);
 list.push(2);
 list.push(3);
 list.push(4);
+list.pop();
+console.log(list);
