@@ -22,7 +22,7 @@ class SignlyLinkedList {
 		this.tail = null;
 	}
 
-	push(value: number) {
+	push(value: unknown) {
 		let newNode = new ListNode(value);
 
 		const listHasNoLength = this.length === 0;
@@ -66,8 +66,23 @@ class SignlyLinkedList {
 		else {
 			const currentHead = this.head;
 			this.head = currentHead?.next;
-			this.length--;
+			this.length -= 1;
 		}
+		return this;
+	}
+
+	unshift(value: unknown) {
+		const newNode = new ListNode(value);
+		if (this.length === 0) {
+			this.head = newNode;
+			this.tail = newNode;
+		} else {
+			const currentHead = this.head;
+			newNode.next = this.head;
+			this.head = newNode;
+		}
+		this.length += 1;
+
 		return this;
 	}
 }
@@ -78,7 +93,8 @@ list.push(2);
 list.push(3);
 list.push(4);
 list.pop();
-console.log(list.shift());
+list.shift();
+console.log(list.unshift(10));
 
 /*
 	// unshift(value)

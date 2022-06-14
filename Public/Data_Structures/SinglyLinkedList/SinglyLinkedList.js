@@ -54,8 +54,22 @@ var SignlyLinkedList = /** @class */ (function () {
         else {
             var currentHead = this.head;
             this.head = currentHead === null || currentHead === void 0 ? void 0 : currentHead.next;
-            this.length--;
+            this.length -= 1;
         }
+        return this;
+    };
+    SignlyLinkedList.prototype.unshift = function (value) {
+        var newNode = new ListNode(value);
+        if (this.length === 0) {
+            this.head = newNode;
+            this.tail = newNode;
+        }
+        else {
+            var currentHead = this.head;
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+        this.length += 1;
         return this;
     };
     return SignlyLinkedList;
@@ -66,7 +80,8 @@ list.push(2);
 list.push(3);
 list.push(4);
 list.pop();
-console.log(list.shift());
+list.shift();
+console.log(list.unshift(10));
 /*
     // unshift(value)
     // get(index)
