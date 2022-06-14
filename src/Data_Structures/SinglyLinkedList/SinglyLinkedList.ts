@@ -85,6 +85,17 @@ class SignlyLinkedList {
 
 		return this;
 	}
+
+	get(index: number) {
+		if (index < 0 || index >= this.length) return undefined;
+
+		let currentNode = this.head;
+		for (let i = 0; i < index - 1; i++) {
+			currentNode = currentNode?.next;
+		}
+
+		return currentNode;
+	}
 }
 
 const list = new SignlyLinkedList();
@@ -92,13 +103,8 @@ list.push(1);
 list.push(2);
 list.push(3);
 list.push(4);
-list.pop();
-list.shift();
-console.log(list.unshift(10));
 
 /*
-	// unshift(value)
-	// get(index)
 	// set(value,index)
 	// insert
 	// remove
