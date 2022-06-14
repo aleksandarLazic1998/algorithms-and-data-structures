@@ -106,6 +106,20 @@ var SignlyLinkedList = /** @class */ (function () {
             foundNode.value = value;
         return true;
     };
+    SignlyLinkedList.prototype.remove = function (index) {
+        var _a;
+        if (index < 0)
+            return false;
+        if (index === this.length)
+            this.pop();
+        if (index === 0)
+            this.shift();
+        var previousNode = this.get(index - 1);
+        var nextNode = (_a = this.get(index)) === null || _a === void 0 ? void 0 : _a.next;
+        if (previousNode)
+            previousNode.next = nextNode;
+        return true;
+    };
     return SignlyLinkedList;
 }());
 var list = new SignlyLinkedList();
@@ -114,7 +128,7 @@ list.push(2);
 list.push(3);
 list.push(4);
 list.set("Aleksandar", 2);
+list.remove(3);
 /*
-    // remove
     // reverse
 */

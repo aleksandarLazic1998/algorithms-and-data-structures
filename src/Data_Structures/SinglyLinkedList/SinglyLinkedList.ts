@@ -121,6 +121,18 @@ class SignlyLinkedList {
 		if (foundNode) foundNode.value = value;
 		return true;
 	}
+
+	remove(index: number) {
+		if (index < 0) return false;
+		if (index === this.length) this.pop();
+		if (index === 0) this.shift();
+
+		const previousNode = this.get(index - 1);
+		const nextNode = this.get(index)?.next;
+		if (previousNode) previousNode.next = nextNode;
+
+		return true;
+	}
 }
 
 const list = new SignlyLinkedList();
@@ -129,8 +141,8 @@ list.push(2);
 list.push(3);
 list.push(4);
 list.set("Aleksandar", 2);
+list.remove(3);
 
 /*
-	// remove
 	// reverse
 */
