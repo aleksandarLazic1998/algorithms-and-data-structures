@@ -48,6 +48,16 @@ var SignlyLinkedList = /** @class */ (function () {
         }
         return currentLastItem;
     };
+    SignlyLinkedList.prototype.shift = function () {
+        if (this.length === 0)
+            return undefined;
+        else {
+            var currentHead = this.head;
+            this.head = currentHead === null || currentHead === void 0 ? void 0 : currentHead.next;
+            this.length--;
+        }
+        return this;
+    };
     return SignlyLinkedList;
 }());
 var list = new SignlyLinkedList();
@@ -56,4 +66,12 @@ list.push(2);
 list.push(3);
 list.push(4);
 list.pop();
-console.log(list);
+console.log(list.shift());
+/*
+    // unshift(value)
+    // get(index)
+    // set(value,index)
+    // insert
+    // remove
+    // reverse
+*/

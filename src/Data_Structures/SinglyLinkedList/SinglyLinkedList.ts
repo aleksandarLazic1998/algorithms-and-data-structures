@@ -60,6 +60,16 @@ class SignlyLinkedList {
 
 		return currentLastItem;
 	}
+
+	shift() {
+		if (this.length === 0) return undefined;
+		else {
+			const currentHead = this.head;
+			this.head = currentHead?.next;
+			this.length--;
+		}
+		return this;
+	}
 }
 
 const list = new SignlyLinkedList();
@@ -68,4 +78,13 @@ list.push(2);
 list.push(3);
 list.push(4);
 list.pop();
-console.log(list);
+console.log(list.shift());
+
+/*
+	// unshift(value)
+	// get(index)
+	// set(value,index)
+	// insert
+	// remove
+	// reverse
+*/
