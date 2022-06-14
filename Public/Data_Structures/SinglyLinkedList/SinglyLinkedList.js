@@ -98,6 +98,14 @@ var SignlyLinkedList = /** @class */ (function () {
         this.length += 1;
         return this;
     };
+    SignlyLinkedList.prototype.set = function (value, index) {
+        if (index < 0 || index > this.length)
+            return false;
+        var foundNode = this.get(index);
+        if (foundNode)
+            foundNode.value = value;
+        return true;
+    };
     return SignlyLinkedList;
 }());
 var list = new SignlyLinkedList();
@@ -105,9 +113,8 @@ list.push(1);
 list.push(2);
 list.push(3);
 list.push(4);
-list.insert(6, 2);
+list.set("Aleksandar", 2);
 /*
-    // set(value,index)
     // remove
     // reverse
 */
