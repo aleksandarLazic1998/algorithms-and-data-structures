@@ -96,6 +96,24 @@ class SignlyLinkedList {
 
 		return currentNode;
 	}
+
+	insert(value: unknown, index: number) {
+		if (index < 0) return undefined;
+		if (index === this.length) this.push(value);
+		if (index === 0) this.unshift(value);
+
+		const newNode = new ListNode(value);
+		let previousNode = this.get(index - 1);
+		const nextNode = previousNode?.next;
+
+		if (previousNode) {
+			newNode.next = nextNode;
+			previousNode.next = newNode;
+		}
+
+		this.length += 1;
+		return this;
+	}
 }
 
 const list = new SignlyLinkedList();
@@ -103,10 +121,10 @@ list.push(1);
 list.push(2);
 list.push(3);
 list.push(4);
+list.insert(6, 2);
 
 /*
 	// set(value,index)
-	// insert
 	// remove
 	// reverse
 */
